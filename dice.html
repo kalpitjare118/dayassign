@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roll Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f3f4f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .dice {
+            font-size: 100px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dice Roll Game 🎲</h1>
+        <div class="dice" id="dice">🎲 🎲</div>
+        <h2 id="message">Click the button to roll the dice!</h2>
+        <button onclick="rollDice()">Roll Dice</button>
+    </div>
+
+    <script>
+        function rollDice() {
+            const diceFaces = ["🎲", "⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+            const player1Roll = Math.floor(Math.random() * 6) + 1;
+            const player2Roll = Math.floor(Math.random() * 6) + 1;
+
+            document.getElementById("dice").innerHTML = `${diceFaces[player1Roll]} ${diceFaces[player2Roll]}`;
+
+            let message;
+            if (player1Roll > player2Roll) {
+                message = "🎉 Player 1 Wins!";
+            } else if (player1Roll < player2Roll) {
+                message = "🎉 Player 2 Wins!";
+            } else {
+                message = "🤝 It's a Tie!";
+            }
+
+            document.getElementById("message").innerText = message;
+        }
+    </script>
+</body>
+</html>
